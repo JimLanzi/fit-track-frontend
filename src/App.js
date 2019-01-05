@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AuthService from './AuthService'
+import withAuth from './withAuth'
+
+const Auth = new AuthService();
 
 class App extends Component {
+  
+  constructor(props) {
+      super(...arguments);
+      this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout() {
+      Auth.logout();
+      this.props.history.replace('/login');
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,6 +26,7 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <h1 className="App-title">Welcome {this.props.user.user_name}</h1>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -19,10 +35,11 @@ class App extends Component {
           >
             Learn React
           </a>
+          <button onClick={this.handleLogout}> Logout </button>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+export default withAuth(App);
