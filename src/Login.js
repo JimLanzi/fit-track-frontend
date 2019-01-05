@@ -19,13 +19,15 @@ class Login extends Component
         this.Auth = new AuthService("http://208.68.36.25/api");
     }
 
+    // This is needed for the context.router.history stuff to work below
+    static contextTypes = {router: PropTypes.object};
 
     componentWillMount()
     {
         if(this.Auth.loggedIn())
         {
-//            this.context.router.history.push("/");
-            this.props.history.replace('/');
+            this.context.router.history.push("/");
+//            this.props.history.replace('/');
         }
     }
 
