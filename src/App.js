@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
@@ -90,8 +89,8 @@ class App extends Component {
                   <Card>
                       <XYPlot
                           xType="ordinal"
-                          width={400}
-                          height={400}>
+                          width={300}
+                          height={300}>
                              <VerticalGridLines />
                              <HorizontalGridLines />
                              <XAxis title="Date" />
@@ -100,7 +99,6 @@ class App extends Component {
                                  data={this.state.data}
                                  style={{stroke: 'violet', strokeWidth: 3}}/>
                       </XYPlot>                  
-                      <Typography> Plot will go here </Typography>
                   </Card>
               </Grid>
           </Grid>
